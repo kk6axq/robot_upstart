@@ -104,7 +104,8 @@ fi
 # Punch it.
 export ROS_HOME=$(echo ~@(user))/.ros
 export ROS_LOG_DIR=$log_path
-setuidgid @(user) roslaunch $LAUNCH_FILENAME @(roslaunch_wait?'--wait ')&
+sudo su -l ubuntu
+roslaunch $LAUNCH_FILENAME
 PID=$!
 
 log info "@(name): Started roslaunch as background process, PID $PID, ROS_LOG_DIR=$ROS_LOG_DIR"
